@@ -1,5 +1,5 @@
 {
-  description = "An empty flake with a devShell and direnv";
+  description = "Simple devshell to use the kubectl and the Flux CLI";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -11,8 +11,12 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            hello
+            kubectl
+            fluxcd
           ];
+          
+          # Relative instead of in the store for security
+          KUBECONFIG = "./kubeconfig.yaml";
         };
       }
     );

@@ -21,8 +21,10 @@ spec:
         web:
           port: 80
           targetPort: 80
+          # This is currently ignored for some reason
           nodePort: 30001
         websecure:
           port: 443
           targetPort: 443
+          # This is currently ignored for some reason
           nodePort: 30002

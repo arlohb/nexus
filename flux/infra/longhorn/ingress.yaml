@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   type: ExternalName
-  externalName: longhorn-frontend.longhorn.svc.cluster.local
+  externalName: longhorn-frontend.longhorn-system.svc.cluster.local
   ports:
     - name: http
       port: 8080

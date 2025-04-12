@@ -6,4 +6,3 @@ metadata:
 resources:
   - helm-release.yaml
   - helm-repository.yaml
-  - ingress.yaml

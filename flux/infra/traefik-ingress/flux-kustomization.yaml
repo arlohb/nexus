@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: traefik-ingress
+  namespace: flux-system
+spec:
+  path: ./flux/infra/traefik-ingress
+  prune: true
+  interval: 10m
+  dependsOn:
+    - traefik
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

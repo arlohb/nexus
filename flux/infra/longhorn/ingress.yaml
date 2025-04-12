@@ -27,3 +27,4 @@ spec:
       services:
         - name: longhorn-frontend
           kind: Service
+          port: 8080

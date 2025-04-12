@@ -8,7 +8,7 @@ spec:
   externalName: longhorn-frontend.longhorn-system.svc.cluster.local
   ports:
     - name: http
-      port: 8080
+      port: 80
       protocol: TCP
 ---
 apiVersion: traefik.io/v1alpha1
@@ -28,4 +28,4 @@ spec:
       services:
         - name: longhorn-frontend
           kind: Service
-          port: 8080
+          port: 80

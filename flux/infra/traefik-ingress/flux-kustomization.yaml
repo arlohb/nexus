@@ -8,7 +8,7 @@ spec:
   prune: true
   interval: 10m
   dependsOn:
-    - traefik
+    - name: traefik
   sourceRef:
     kind: GitRepository
     name: flux-system

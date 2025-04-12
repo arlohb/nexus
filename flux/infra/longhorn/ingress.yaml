@@ -23,7 +23,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`longhorn.local`)
+    - match: Host(`longhorn.home`)
       kind: Rule
       services:
         - name: longhorn-frontend

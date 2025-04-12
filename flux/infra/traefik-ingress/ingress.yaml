@@ -10,7 +10,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik.local`)
+    - match: Host(`traefik.home`)
       kind: Rule
       services:
         - name: api@internal

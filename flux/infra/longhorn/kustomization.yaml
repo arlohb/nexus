@@ -1,8 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+spec:
+  dependsOn:
+    - kyverno
+    - traefik
 resources:
   - namespace.yaml
   - helm-release.yaml
   - helm-repository.yaml
-  # - ingress.yaml
-  # - nixos-fix.yaml
+  - ingress.yaml
+  - nixos-fix.yaml

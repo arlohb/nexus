@@ -20,6 +20,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
     - match: Host(`longhorn.local`)

@@ -27,3 +27,6 @@ spec:
           targetPort: 443
           # This is currently ignored for some reason
           nodePort: 30002
+    providers:
+      kubernetesCRD:
+        allowExternalNameServices: true

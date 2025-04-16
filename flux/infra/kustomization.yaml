@@ -5,3 +5,4 @@ resources:
   - traefik-ingress/flux-kustomization.yaml
   - kyverno/flux-kustomization.yaml
   - longhorn/flux-kustomization.yaml
+  - longhorn-config/flux-kustomization.yaml

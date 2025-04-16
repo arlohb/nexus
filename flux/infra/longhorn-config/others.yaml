@@ -1,0 +1,20 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  name: arlo-laptop1
+spec:
+  allowScheduling: false
+---
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  name: pluto
+spec:
+  allowScheduling: false
+---
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  name: neptune
+spec:
+  allowScheduling: false

@@ -1,0 +1,13 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  name: datasphere
+spec:
+  allowScheduling: true
+  disks:
+    nas:
+      path: /srv/dev-disk-by-uuid-b54f279e-abaf-4203-8566-0fb9ac153619/Longhorn
+      allowScheduling: true
+      storageReserved: 0
+      evictionRequested: false
+      tags: []

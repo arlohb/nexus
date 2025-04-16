@@ -13,6 +13,7 @@ spec:
         name: longhorn
         namespace: longhorn-system
   values:
+    persistence:
+      defaultClassReplicaCount: 1
     defaultSettings:
       createDefaultDiskLabeledNodes: false
-      defaultReplicaCount: 1

@@ -2,6 +2,7 @@ apiVersion: longhorn.io/v1beta2
 kind: Node
 metadata:
   name: datasphere
+  namespace: longhorn-system
 spec:
   allowScheduling: true
   disks:

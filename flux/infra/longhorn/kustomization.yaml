@@ -5,4 +5,4 @@ resources:
   - helm-release.yaml
   - helm-repository.yaml
   - ingress.yaml
-  - nixos-fix.yaml
+  # - nixos-fix.yaml

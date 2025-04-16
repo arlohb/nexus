@@ -8,7 +8,7 @@ spec:
   prune: true
   interval: 10m
   dependsOn:
-    - name: kyverno
+    # - name: kyverno
     - name: traefik
   sourceRef:
     kind: GitRepository

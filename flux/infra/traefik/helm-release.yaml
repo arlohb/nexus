@@ -16,17 +16,15 @@ spec:
     service:
       enabled: true
       type: NodePort
-      ports:
-        web:
-          port: 80
-          targetPort: 80
-          # This is currently ignored for some reason
-          nodePort: 30001
-        websecure:
-          port: 443
-          targetPort: 443
-          # This is currently ignored for some reason
-          nodePort: 30002
+    ports:
+      web:
+        port: 80
+        targetPort: 80
+        nodePort: 30001
+      websecure:
+        port: 443
+        targetPort: 443
+        nodePort: 30002
     providers:
       kubernetesCRD:
         allowExternalNameServices: true

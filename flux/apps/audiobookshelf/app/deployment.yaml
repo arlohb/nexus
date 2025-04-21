@@ -38,4 +38,4 @@ spec:
         - name: media-audiobooks
           nfs:
             server: datasphere
-            path: /Media/Audiobooks
+            path: /Root/Media/Audiobooks

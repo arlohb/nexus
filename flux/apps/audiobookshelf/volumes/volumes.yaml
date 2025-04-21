@@ -1,3 +1,19 @@
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  name: audiobookshelf-config
+  namespace: longhorn-system
+spec:
+  size: "1073741824" # 1Gi
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  name: audiobookshelf-metadata
+  namespace: longhorn-system
+spec:
+  size: "5368709120" # 5Gi
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:

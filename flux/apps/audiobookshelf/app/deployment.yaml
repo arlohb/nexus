@@ -28,14 +28,14 @@ spec:
               mountPath: /metadata
             - name: media-audiobooks
               mountPath: /audiobooks
-  volumes:
-    - name: audiobookshelf-config
-      persistentVolumeClaim:
-        claimName: audiobookshelf-config
-    - name: audiobookshelf-metadata
-      persistentVolumeClaim:
-        claimName: audiobookshelf-metadata
-    - name: media-audiobooks
-      nfs:
-        server: datasphere
-        path: /Media/Audiobooks
+      volumes:
+        - name: audiobookshelf-config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: media-audiobooks
+          nfs:
+            server: datasphere
+            path: /Media/Audiobooks

@@ -21,23 +21,23 @@ spec:
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 80
-          # volumeMounts:
-          #   - name: audiobookshelf-config
-          #     mountPath: /config
-          #   - name: audiobookshelf-metadata
-          #     mountPath: /metadata
-          #   - name: media-audiobooks
-          #     mountPath: /audiobooks
-      # volumes:
-      #   - name: audiobookshelf-config
-      #     nfs:
-      #       server: datasphere
-      #       path: /Root/Volumes/audiobookshelf/config
-      #   - name: audiobookshelf-metadata
-      #     nfs:
-      #       server: datasphere
-      #       path: /Root/Volumes/audiobookshelf/metadata
-      #   - name: media-audiobooks
-      #     nfs:
-      #       server: datasphere
-      #       path: /Root/Media/Audiobooks
+          volumeMounts:
+            - name: audiobookshelf-config
+              mountPath: /config
+            - name: audiobookshelf-metadata
+              mountPath: /metadata
+            - name: media-audiobooks
+              mountPath: /audiobooks
+      volumes:
+        - name: audiobookshelf-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/audiobookshelf/config
+        - name: audiobookshelf-metadata
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/audiobookshelf/metadata
+        - name: media-audiobooks
+          nfs:
+            server: datasphere
+            path: /Root/Media/Audiobooks

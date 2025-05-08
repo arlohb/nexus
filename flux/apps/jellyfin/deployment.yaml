@@ -34,8 +34,8 @@ spec:
               mountPath: /config
             - name: jellyfin-cache
               mountPath: /cache
-            # - name: media-shows
-            #   mountPath: /shows
+            - name: media-shows
+              mountPath: /shows
       volumes:
         - name: render-device
           hostPath:
@@ -49,7 +49,7 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Volumes/jellyfin/cache
-        # - name: media-shows
-        #   nfs:
-        #     server: datasphere
-        #     path: /Root/Media/Shows
+        - name: media-shows
+          nfs:
+            server: datasphere
+            path: /Root/Media/Shows

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: jellyfin
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      nodeSelector:
+        transcode: "true"
+      securityContext:
+        suplementalGroups:
+          - 303
+      containers:
+        - name: jellyfin
+          image: jellyfin/jellyfin
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: render-device
+              mountPath: /dev/dri/renderD128
+              readOnly: true
+            - name: jellyfin-config
+              mountPath: /config
+            - name: jellyfin-cache
+              mountPath: /cache
+            # - name: media-shows
+            #   mountPath: /shows
+      volumes:
+        - name: render-device
+          hostPath:
+            path: /dev/dri/renderD128
+            type: CharDevice
+        - name: jellyfin-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/jellyfin/config
+        - name: jellyfin-cache
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/jellyfin/cache
+        # - name: media-shows
+        #   nfs:
+        #     server: datasphere
+        #     path: /Root/Media/Shows

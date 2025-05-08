@@ -1,14 +1,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: audiobookshelf-app
+  name: audiobookshelf
   namespace: flux-system
 spec:
-  path: ./flux/apps/audiobookshelf/app
+  path: ./flux/apps/audiobookshelf
   prune: true
   interval: 10m
-  dependsOn:
-    - name: audiobookshelf-volumes
   sourceRef:
     kind: GitRepository
     name: flux-system

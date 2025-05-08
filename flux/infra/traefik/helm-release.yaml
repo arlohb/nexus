@@ -13,6 +13,8 @@ spec:
         name: traefik
         namespace: default
   values:
+    nodeSelector:
+      network: fast
     service:
       enabled: true
       type: NodePort

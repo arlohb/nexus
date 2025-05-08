@@ -1,5 +1,7 @@
 #!/bin/sh
 
+./label.sh
+
 flux bootstrap github \
     --owner=arlohb \
     --repository=nexus \

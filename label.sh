@@ -18,3 +18,5 @@ kubectl label node neptune zigbee=false --overwrite
 kubectl label node pluto zigbee=true --overwrite
 kubectl label node arlo-laptop1 zigbee=false --overwrite
 
+kubectl label node neptune jellyfin=true --overwrite
+

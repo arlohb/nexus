@@ -19,7 +19,7 @@ spec:
       nodeSelector:
         transcode: "true"
       securityContext:
-        suplementalGroups:
+        supplementalGroups:
           - 303
       containers:
         - name: jellyfin

@@ -19,6 +19,7 @@ spec:
       nodeSelector:
         transcode: "true"
       securityContext:
+        privileged: true
         supplementalGroups:
           - 303
       containers:

@@ -20,11 +20,12 @@ spec:
         transcode: "true"
       securityContext:
         supplementalGroups:
-          - 303
+          - 303 # render group
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin
           securityContext:
+            # Required for hardware acceleration
             privileged: true
           ports:
             - containerPort: 8096

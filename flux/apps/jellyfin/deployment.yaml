@@ -20,6 +20,9 @@ spec:
         transcode: "true"
       securityContext:
         privileged: true
+        capabilities:
+          add: ["SYS_ADMIN", "SYS_RAWIO"]
+        allowPrivilegeEscalation: true
         supplementalGroups:
           - 303
       containers:

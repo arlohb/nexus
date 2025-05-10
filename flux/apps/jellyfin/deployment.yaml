@@ -19,15 +19,16 @@ spec:
       nodeSelector:
         transcode: "true"
       securityContext:
-        privileged: true
-        capabilities:
-          add: ["SYS_ADMIN", "SYS_RAWIO"]
-        allowPrivilegeEscalation: true
         supplementalGroups:
           - 303
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin
+          securityContext:
+            privileged: true
+            capabilities:
+              add: ["SYS_ADMIN", "SYS_RAWIO"]
+            allowPrivilegeEscalation: true
           ports:
             - containerPort: 8096
           volumeMounts:

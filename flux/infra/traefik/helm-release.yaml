@@ -30,3 +30,8 @@ spec:
     providers:
       kubernetesCRD:
         allowExternalNameServices: true
+    entryPoints:
+      web:
+        forwardedHeaders:
+          trustedIPs:
+            - "10.0.0.0/8"

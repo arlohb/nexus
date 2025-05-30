@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodered
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: nodered
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nodered
+    spec:
+      containers:
+        - name: nodered
+          image: nodered/node-red:latest
+          ports:
+            - containerPort: 1880
+          volumeMounts:
+            - name: nodered-config
+              mountPath: /data
+            - name: nodered-config
+              mountPath: /music
+      volumes:
+        - name: nodered-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/nodered
+        # For SpotDL automation
+        - name: media-music
+          nfs:
+            server: datasphere
+            path: /Root/Media/Music

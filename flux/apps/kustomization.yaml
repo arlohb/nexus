@@ -4,3 +4,4 @@ resources:
   - audiobookshelf/flux-kustomization.yaml
   - jellyfin/flux-kustomization.yaml
   - homeassistant/flux-kustomization.yaml
+  - nodered/flux-kustomization.yaml

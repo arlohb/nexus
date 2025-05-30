@@ -6,3 +6,4 @@ resources:
   - grafana-ingress.yaml
   - prometheus-ingress.yaml
   - test-server/
+  - whoami/

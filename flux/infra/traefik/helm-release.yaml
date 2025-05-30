@@ -15,9 +15,12 @@ spec:
   values:
     nodeSelector:
       network: fast
+    deployment:
+      kind: DaemonSet
     service:
       enabled: true
       type: NodePort
+      externalTrafficPolicy: Local
     ports:
       web:
         port: 80

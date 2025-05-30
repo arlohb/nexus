@@ -26,19 +26,16 @@ spec:
         port: 80
         targetPort: 80
         nodePort: 30001
+        forwardedHeaders:
+          trustedIPs:
+            - "10.0.0.0/8"
       websecure:
         port: 443
         targetPort: 443
         nodePort: 30002
+        forwardedHeaders:
+          trustedIPs:
+            - "10.0.0.0/8"
     providers:
       kubernetesCRD:
         allowExternalNameServices: true
-    entryPoints:
-      web:
-        forwardedHeaders:
-          trustedIPs:
-            - "10.0.0.0/8"
-      websecure:
-        forwardedHeaders:
-          trustedIPs:
-            - "10.0.0.0/8"

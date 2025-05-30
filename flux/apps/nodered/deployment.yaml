@@ -28,7 +28,7 @@ spec:
           volumeMounts:
             - name: nodered-config
               mountPath: /data
-            - name: nodered-config
+            - name: media-music
               mountPath: /music
       volumes:
         - name: nodered-config

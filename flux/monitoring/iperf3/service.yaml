@@ -6,9 +6,10 @@ metadata:
 spec:
   selector:
     app: iperf3
+  type: NodePort
+  externalTrafficPolicy: Local
   ports:
     - protocol: TCP
       port: 5201
       targetPort: 5201
       nodePort: 30521
-  externalTrafficPolicy: Local

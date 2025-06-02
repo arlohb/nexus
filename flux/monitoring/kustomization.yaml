@@ -6,3 +6,4 @@ resources:
   - grafana-ingress.yaml
   - prometheus-ingress.yaml
   - whoami/
+  - iperf3/

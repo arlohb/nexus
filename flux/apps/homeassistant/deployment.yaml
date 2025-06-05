@@ -21,6 +21,9 @@ spec:
       containers:
         - name: homeassistant
           image: ghcr.io/home-assistant/home-assistant:stable
+          securityContext:
+            # Required for zigbee device access
+            privileged: true
           ports:
             - containerPort: 8123
           env:

@@ -20,7 +20,7 @@ spec:
       # https://github.com/qdm12/gluetun-wiki/pull/119
       initContainers:
         - name: gluetun
-          image: qmcgar/guetun
+          image: qmcgaw/guetun
           restartPolicy: Always
           env:
             - name: VPN_SERVICE_PROVIDER

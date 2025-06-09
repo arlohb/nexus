@@ -72,9 +72,9 @@ spec:
             - name: TZ
               value: Europe/London
             - name: PUID
-              value: 33
+              value: "33"
             - name: GUID
-              value: 33
+              value: "33"
           volumeMounts:
             - name: qbt-config
               mountPath: /config

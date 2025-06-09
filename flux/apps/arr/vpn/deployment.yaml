@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpn
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: vpn
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: vpn
+    spec:
+      # Config from here
+      # https://github.com/qdm12/gluetun-wiki/pull/119
+      initContainers:
+        - name: gluetun
+          image: qmcgar/guetun
+          restartPolicy: Always
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: mullvad
+            - name: VPN_TYPE
+              value: wireguard
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-secret
+                  key: private-key
+            - name: WIREGUARD_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-secret
+                  key: addresses
+            - name: SERVER_CITIES
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-secret
+                  key: cities
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          startupProbe:
+            exec:
+              command:
+                - /gluetun-entrypoint
+                - healthcheck
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+                - /gluetun-entrypoint
+                - healthcheck
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
+      containers:
+        - name: qbt
+          image: lscr.io/linuxserver/qbittorrent:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TZ
+              value: Europe/London
+          volumeMounts:
+            - name: qbt-config
+              mountPath: /config
+            - name: qbt-downloads
+              mountPath: /downloads
+      volumes:
+        - name: qbt-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/qbt/config
+        - name: qbt-downloads
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/qbt/downloads

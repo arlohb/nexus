@@ -13,6 +13,8 @@
           buildInputs = with pkgs; [
             kubectl
             fluxcd
+            age
+            sops
           ];
           
           # Relative instead of in the store for security

@@ -18,59 +18,59 @@ spec:
     spec:
       # Config from here
       # https://github.com/qdm12/gluetun-wiki/pull/119
-      initContainers:
-        - name: gluetun
-          image: qmcgaw/gluetun
-          restartPolicy: Always
-          env:
-            - name: VPN_SERVICE_PROVIDER
-              value: mullvad
-            - name: VPN_TYPE
-              value: wireguard
-            - name: WIREGUARD_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-secret
-                  key: private-key
-            - name: WIREGUARD_ADDRESSES
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-secret
-                  key: addresses
-            - name: SERVER_CITIES
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-secret
-                  key: cities
-            - name: BLOCK-MALICIOUS
-              value: off
-            - name: FIREWALL_INPUT_PORTS
-              value: "6881"
-            - name: DNS_KEEP_NAMESERVER
-              value: on
-            - name: FIREWALL_OUTBOUND_SUBNETS
-              value: 10.42.0.0/15 
-          securityContext:
-            capabilities:
-              add:
-                - NET_ADMIN
-          startupProbe:
-            exec:
-              command:
-                - /gluetun-entrypoint
-                - healthcheck
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            periodSeconds: 5
-            failureThreshold: 3
-          livenessProbe:
-            exec:
-              command:
-                - /gluetun-entrypoint
-                - healthcheck
-            timeoutSeconds: 5
-            periodSeconds: 5
-            failureThreshold: 3
+      # initContainers:
+      #   - name: gluetun
+      #     image: qmcgaw/gluetun
+      #     restartPolicy: Always
+      #     env:
+      #       - name: VPN_SERVICE_PROVIDER
+      #         value: mullvad
+      #       - name: VPN_TYPE
+      #         value: wireguard
+      #       - name: WIREGUARD_PRIVATE_KEY
+      #         valueFrom:
+      #           secretKeyRef:
+      #             name: vpn-secret
+      #             key: private-key
+      #       - name: WIREGUARD_ADDRESSES
+      #         valueFrom:
+      #           secretKeyRef:
+      #             name: vpn-secret
+      #             key: addresses
+      #       - name: SERVER_CITIES
+      #         valueFrom:
+      #           secretKeyRef:
+      #             name: vpn-secret
+      #             key: cities
+      #       - name: BLOCK-MALICIOUS
+      #         value: off
+      #       - name: FIREWALL_INPUT_PORTS
+      #         value: "6881"
+      #       - name: DNS_KEEP_NAMESERVER
+      #         value: on
+      #       - name: FIREWALL_OUTBOUND_SUBNETS
+      #         value: 10.42.0.0/15 
+      #     securityContext:
+      #       capabilities:
+      #         add:
+      #           - NET_ADMIN
+      #     startupProbe:
+      #       exec:
+      #         command:
+      #           - /gluetun-entrypoint
+      #           - healthcheck
+      #       initialDelaySeconds: 10
+      #       timeoutSeconds: 5
+      #       periodSeconds: 5
+      #       failureThreshold: 3
+      #     livenessProbe:
+      #       exec:
+      #         command:
+      #           - /gluetun-entrypoint
+      #           - healthcheck
+      #       timeoutSeconds: 5
+      #       periodSeconds: 5
+      #       failureThreshold: 3
       containers:
         - name: qbt
           image: lscr.io/linuxserver/qbittorrent:latest

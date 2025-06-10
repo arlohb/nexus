@@ -32,7 +32,7 @@ spec:
             - name: sonarr-data
               mountPath: /config
             - name: media-shows
-              mountPath: /moviews
+              mountPath: /shows
             - name: qbt-downloads
               mountPath: /downloads
       volumes:

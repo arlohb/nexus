@@ -46,6 +46,10 @@ spec:
               value: off
             - name: FIREWALL_INPUT_PORTS
               value: "6881"
+            - name: DNS_KEEP_NAMESERVER
+              value: on
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: 10.42.0.0/15 
           securityContext:
             capabilities:
               add:

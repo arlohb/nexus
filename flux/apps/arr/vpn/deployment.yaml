@@ -44,6 +44,8 @@ spec:
                   key: cities
             - name: DNS_KEEP_NAMESERVER
               value: on
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: 10.0.0.0/8
           securityContext:
             privileged: true
             capabilities:

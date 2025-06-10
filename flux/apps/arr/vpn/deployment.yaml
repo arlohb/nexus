@@ -42,12 +42,8 @@ spec:
                 secretKeyRef:
                   name: vpn-secret
                   key: cities
-            - name: BLOCK-MALICIOUS
-              value: off
-            - name: DOT
-              value: off
-            - name: DNS_ADDRESS
-              value: 10.64.0.1
+            - name: DNS_KEEP_NAMESERVER
+              value: on
           securityContext:
             privileged: true
             capabilities:

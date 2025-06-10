@@ -44,6 +44,8 @@ spec:
                   key: cities
             - name: BLOCK-MALICIOUS
               value: off
+            - name: DNS_ADDRESS
+              value: 10.64.0.1
           securityContext:
             privileged: true
             capabilities:

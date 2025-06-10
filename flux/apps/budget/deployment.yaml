@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budget
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: budget
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: budget
+    spec:
+      containers:
+        - name: budget
+          image: actualbudget/actual-server:latest
+          ports:
+            - containerPort: 5006
+          volumeMounts:
+            - name: budget-data
+              mountPath: /data
+      volumes:
+        - name: budget-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/budget

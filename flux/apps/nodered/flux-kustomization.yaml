@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: nodered
+  name: apps-nodered
   namespace: flux-system
 spec:
   path: ./flux/apps/nodered

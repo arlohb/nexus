@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: audiobookshelf
+  name: apps-audiobookshelf
   namespace: flux-system
 spec:
   path: ./flux/apps/audiobookshelf

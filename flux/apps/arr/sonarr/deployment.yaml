@@ -26,7 +26,7 @@ spec:
               value: Europe/London
             - name: PUID
               value: "33"
-            - name: GUID
+            - name: PGID
               value: "33"
           volumeMounts:
             - name: sonarr-data

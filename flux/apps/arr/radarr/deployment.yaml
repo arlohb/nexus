@@ -32,7 +32,7 @@ spec:
             - name: radarr-data
               mountPath: /config
             - name: media-movies
-              mountPath: /moviews
+              mountPath: /movies
             - name: qbt-downloads
               mountPath: /downloads
       volumes:

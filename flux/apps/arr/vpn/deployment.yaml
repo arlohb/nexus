@@ -87,6 +87,27 @@ spec:
               mountPath: /config
             - name: qbt-downloads
               mountPath: /downloads
+        - name: prowlarr
+          image: lscr.io/linuxserver/prowlarr:latest
+          ports:
+            - containerPort: 9696
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: PGID
+              value: "33"
+          volumeMounts:
+            - name: prowlarr-config
+              mountPath: /config
+        - name: flaresolverr
+          image: flaresolverr/flaresolverr:latest
+          ports:
+            - containerPort: 8191
+          env:
+            - name: TZ
+              value: Europe/London
       volumes:
         - name: qbt-config
           nfs:
@@ -96,3 +117,7 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Volumes/qbt/downloads
+        - name: prowlarr-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/prowlarr

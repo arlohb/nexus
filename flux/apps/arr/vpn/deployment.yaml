@@ -42,6 +42,10 @@ spec:
                 secretKeyRef:
                   name: vpn-secret
                   key: cities
+            - name: BLOCK-MALICIOUS
+              value: off
+            - name: FIREWALL_INPUT_PORTS
+              value: "6881"
           securityContext:
             capabilities:
               add:

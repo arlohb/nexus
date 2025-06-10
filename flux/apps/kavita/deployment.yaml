@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: kavita
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      containers:
+        - name: kavita
+          image: lscr.io/linuxserver/kavita:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: PGID
+              value: "33"
+          volumeMounts:
+            - name: kavita-config
+              mountPath: /config
+            - name: media-books
+              mountPath: /book
+      volumes:
+        - name: kavita-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/kavita
+        - name: media-books
+          nfs:
+            server: datasphere
+            path: /Root/Media/Books

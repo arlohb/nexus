@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kavita
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`books.home`)
+      kind: Rule
+      services:
+        - name: kavita
+          port: 80
+    - match: Host(`books.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: kavita
+          port: 80

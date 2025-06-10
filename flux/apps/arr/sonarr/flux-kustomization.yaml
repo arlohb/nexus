@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: sonarr
+  namespace: flux-system
+spec:
+  path: ./flux/apps/arr/sonarr
+  prune: true
+  interval: 10m
+  dependsOn:
+    - name: infra
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

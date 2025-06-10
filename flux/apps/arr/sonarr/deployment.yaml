@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: sonarr
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          ports:
+            - containerPort: 8989
+          env:
+            - name: TZ
+              value: Europe/London
+          volumeMounts:
+            - name: sonarr-data
+              mountPath: /config
+            - name: media-shows
+              mountPath: /moviews
+            - name: qbt-downloads
+              mountPath: /downloads
+      volumes:
+        - name: sonarr-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/sonarr
+        - name: media-shows
+          nfs:
+            server: datasphere
+            path: /Root/Media/Shows
+        - name: qbt-downloads
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/qbt/downloads

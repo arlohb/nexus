@@ -24,6 +24,10 @@ spec:
           env:
             - name: TZ
               value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: GUID
+              value: "33"
           volumeMounts:
             - name: radarr-data
               mountPath: /config

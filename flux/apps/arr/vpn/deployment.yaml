@@ -99,6 +99,24 @@ spec:
           volumeMounts:
             - name: prowlarr-config
               mountPath: /config
+        - name: ll
+          image: lscr.io/linuxserver/lazylibrarian:latest
+          ports:
+            - containerPort: 5299
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: PGID
+              value: "33"
+          volumeMounts:
+            - name: ll-config
+              mountPath: /config
+            - name: media-books
+              mountPath: /books
+            - name: media-audiobooks
+              mountPath: /audiobooks
       volumes:
         - name: qbt-config
           nfs:
@@ -112,3 +130,15 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Volumes/prowlarr
+        - name: ll-config
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/ll
+        - name: media-books
+          nfs:
+            server: datasphere
+            path: /Root/Media/Books
+        - name: media-audiobooks
+          nfs:
+            server: datasphere
+            path: /Root/Media/Audiobooks

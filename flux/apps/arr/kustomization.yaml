@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - lidarr/flux-kustomization.yaml
   - radarr/flux-kustomization.yaml
+  - readarr/flux-kustomization.yaml
   - sonarr/flux-kustomization.yaml
   - vpn/flux-kustomization.yaml

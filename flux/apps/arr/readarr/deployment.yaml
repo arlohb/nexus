@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readarr
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: readarr
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: readarr
+    spec:
+      containers:
+        - name: readarr
+          image: lscr.io/linuxserver/readarr:latest
+          ports:
+            - containerPort: 8787
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: PGID
+              value: "33"
+          volumeMounts:
+            - name: readarr-data
+              mountPath: /config
+            - name: media-books
+              mountPath: /books
+            - name: media-audiobooks
+              mountPath: /audiobooks
+            - name: qbt-downloads
+              mountPath: /downloads
+      volumes:
+        - name: readarr-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/readarr
+        - name: media-books
+          nfs:
+            server: datasphere
+            path: /Root/Media/Books
+        - name: media-audiobooks
+          nfs:
+            server: datasphere
+            path: /Root/Media/Audiobooks
+        - name: qbt-downloads
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/qbt/downloads

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bazarr
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: bazarr
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: bazarr
+    spec:
+      containers:
+        - name: bazarr
+          image: lscr.io/linuxserver/bazarr:latest
+          ports:
+            - containerPort: 6767
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: PUID
+              value: "33"
+            - name: PGID
+              value: "33"
+          volumeMounts:
+            - name: bazarr-data
+              mountPath: /config
+            - name: media-movies
+              mountPath: /movies
+            - name: media-shows
+              mountPath: /shows
+      volumes:
+        - name: bazarr-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/bazarr
+        - name: media-movies
+          nfs:
+            server: datasphere
+            path: /Root/Media/Movies
+        - name: media-shows
+          nfs:
+            server: datasphere
+            path: /Root/Media/Shows

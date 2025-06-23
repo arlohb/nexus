@@ -30,6 +30,8 @@ spec:
               mountPath: /data
             - name: media-music
               mountPath: /music
+            - name: media-files
+              mountPath: /nc-files
       volumes:
         - name: nodered-config
           nfs:
@@ -40,3 +42,9 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Media/Music
+        # For CoffeeDB
+        - name: media-files
+          nfs:
+            server: datasphere
+            path: /Root/Files
+

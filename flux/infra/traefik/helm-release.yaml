@@ -13,6 +13,10 @@ spec:
         name: traefik
         namespace: default
   values:
+    additionalArguments:
+      # Doubled from default for sonarr manual searching
+      - --serverstransport.forwardingtimeouts.dialtimeout=60s
+      - --serversTransport.forwardingTimeouts.idleConnTimeout=180s
     nodeSelector:
       network: fast
     deployment:

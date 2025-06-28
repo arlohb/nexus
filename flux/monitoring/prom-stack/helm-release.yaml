@@ -18,6 +18,20 @@ spec:
       adminPassword: "changeme"
       service:
         type: ClusterIP
+      persistence:
+        enabled: true
+        type: pvc
+        volumeName: grafana-pv
+        size: 20Gi
+        storageClassName: ""
+        accessModes:
+          - ReadWriteMany
+        finalizers:
+          - kubernetes.io/pvc-protection
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/prometheus

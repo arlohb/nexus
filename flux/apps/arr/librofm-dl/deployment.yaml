@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: librofm-dl
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: librofm-dl
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: librofm-dl
+    spec:
+      containers:
+        - name: librofm-dl
+          image: ghcr.io/burntcookie90/librofm-downloader:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: LIBRO_FM_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: librofm-dl-secret
+                  key: username
+            - name: LIBRO_FM_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: librofm-dl-secret
+                  key: password
+            - name: FORMAT
+              value: M4B_CONVERT_FALLBACK
+            - name: SYNC_INTERVAL
+              value: h
+            - name: LOG_LEVEL
+              value: INFO
+          volumeMounts:
+            - name: librofm-dl-data
+              mountPath: /data
+            - name: media-audiobooks
+              mountPath: /media
+      volumes:
+        - name: librofm-dl-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/librofm-dl
+        - name: media-audiobooks
+          nfs:
+            server: datasphere
+            path: /Root/Media/Audiobooks

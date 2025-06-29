@@ -19,6 +19,12 @@ spec:
       containers:
         - name: librofm-dl
           image: ghcr.io/burntcookie90/librofm-downloader:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 1551Mi
+            limits:
+              memory: 1551Mi
           ports:
             - containerPort: 8080
           env:

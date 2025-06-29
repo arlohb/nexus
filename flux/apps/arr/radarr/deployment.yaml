@@ -19,6 +19,12 @@ spec:
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:latest
+          resources:
+            requests:
+              cpu: 34m
+              memory: 221Mi
+            limits:
+              memory: 221Mi
           ports:
             - containerPort: 7878
           env:

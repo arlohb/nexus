@@ -71,6 +71,12 @@ spec:
       containers:
         - name: qbt
           image: lscr.io/linuxserver/qbittorrent:latest
+          resources:
+            requests:
+              cpu: 90m
+              memory: 331Mi
+            limits:
+              memory: 331Mi
           ports:
             - containerPort: 8080
           env:
@@ -87,6 +93,12 @@ spec:
               mountPath: /downloads
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
+          resources:
+            requests:
+              cpu: 95m
+              memory: 210Mi
+            limits:
+              memory: 210Mi
           ports:
             - containerPort: 9696
           env:
@@ -101,6 +113,12 @@ spec:
               mountPath: /config
         - name: ll
           image: lscr.io/linuxserver/lazylibrarian:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 111Mi
+            limits:
+              memory: 111Mi
           ports:
             - containerPort: 5299
           env:

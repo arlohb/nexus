@@ -19,6 +19,12 @@ spec:
       containers:
         - name: readarr
           image: lscr.io/linuxserver/readarr:0.4.18-develop
+          resources:
+            requests:
+              cpu: 18m
+              memory: 262Mi
+            limits:
+              memory: 262Mi
           ports:
             - containerPort: 8787
           env:

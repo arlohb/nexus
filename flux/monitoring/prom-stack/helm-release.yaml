@@ -40,4 +40,4 @@ spec:
                   storage: 20Gi
               storageClassName: ""
               accessModes:
-                - ReadWriteMany
+                - ReadWriteOnce

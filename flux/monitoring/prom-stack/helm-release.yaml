@@ -21,9 +21,7 @@ spec:
       persistence:
         enabled: true
         type: pvc
-        selector:
-          matchLabels:
-            app: grafana
+        volumeName: grafana-pv
         size: 20Gi
         storageClassName: ""
         accessModes:

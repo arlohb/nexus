@@ -25,13 +25,21 @@ spec:
         size: 20Gi
         storageClassName: ""
         accessModes:
-          - ReadWriteMany
+          - ReadWriteOnce
         finalizers:
           - kubernetes.io/pvc-protection
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes: 
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 20Gi
+              storageClassName: ""
           nfs:
             server: datasphere
             path: /Root/Volumes/prometheus

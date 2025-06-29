@@ -34,12 +34,10 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              accessModes: 
-                - ReadWriteMany
+              volumeName: prom-pv
               resources:
                 requests:
                   storage: 20Gi
               storageClassName: ""
-          nfs:
-            server: datasphere
-            path: /Root/Volumes/prometheus
+              accessModes:
+                - ReadWriteMany

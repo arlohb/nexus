@@ -15,6 +15,13 @@ spec:
       containers:
         - name: iperf3
           image: networkstatic/iperf3
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              memory: 100Mi
+            limits:
           command: [ "iperf3", "-s" ]
           ports:
             - containerPort: 5201

@@ -21,7 +21,9 @@ spec:
       persistence:
         enabled: true
         type: pvc
-        volumeName: grafana-pv
+        selector:
+          matchLabels:
+            app: grafana
         size: 20Gi
         storageClassName: ""
         accessModes:
@@ -34,7 +36,9 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              volumeName: prom-pv
+              selector:
+                matchLabels:
+                  app: prometheus
               resources:
                 requests:
                   storage: 20Gi

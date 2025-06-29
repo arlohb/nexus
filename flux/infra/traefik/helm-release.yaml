@@ -21,6 +21,12 @@ spec:
       network: fast
     deployment:
       kind: DaemonSet
+    resources:
+      requests:
+        cpu: 10m
+        memory: 204Mi
+      limits:
+        memory: 204Mi
     service:
       enabled: true
       type: NodePort

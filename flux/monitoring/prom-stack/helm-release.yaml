@@ -24,6 +24,8 @@ spec:
         volumeName: grafana-pv
         size: 20Gi
         storageClassName: ""
+        selectorLabels:
+          app: grafana
         accessModes:
           - ReadWriteOnce
         finalizers:

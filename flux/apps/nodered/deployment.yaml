@@ -23,6 +23,12 @@ spec:
       containers:
         - name: nodered
           image: nodered/node-red:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 110Mi
+            limits:
+              memory: 110Mi
           ports:
             - containerPort: 1880
           volumeMounts:

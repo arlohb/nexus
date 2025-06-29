@@ -21,6 +21,12 @@ spec:
       containers:
         - name: homeassistant
           image: ghcr.io/home-assistant/home-assistant:stable
+          resources:
+            requests:
+              cpu: 10m
+              memory: 554Mi
+            limits:
+              memory: 554Mi
           securityContext:
             # Required for zigbee device access
             privileged: true

@@ -21,6 +21,12 @@ spec:
           # Need edge until this is released
           # https://github.com/actualbudget/actual/pull/5150
           image: actualbudget/actual-server:edge-alpine
+          resources:
+            requests:
+              cpu: 10m
+              memory: 117Mi
+            limits:
+              memory: 117Mi
           ports:
             - containerPort: 5006
           volumeMounts:

@@ -19,6 +19,12 @@ spec:
       containers:
         - name: kavita
           image: lscr.io/linuxserver/kavita:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 317Mi
+            limits:
+              memory: 317Mi
           ports:
             - containerPort: 5000
           env:

@@ -19,6 +19,12 @@ spec:
       containers:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 145Mi
+            limits:
+              memory: 145Mi
           ports:
             - containerPort: 80
           volumeMounts:

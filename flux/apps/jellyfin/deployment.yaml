@@ -24,6 +24,12 @@ spec:
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin
+          resources:
+            requests:
+              cpu: 10m
+              memory: 640Mi
+            limits:
+              memory: 640Mi
           securityContext:
             # Required for hardware acceleration
             privileged: true

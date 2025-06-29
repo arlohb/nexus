@@ -23,7 +23,7 @@ spec:
         type: pvc
         volumeName: grafana-pv
         size: 20Gi
-        storageClassName: ""
+        storageClassName: null
         selectorLabels:
           app: grafana
         accessModes:

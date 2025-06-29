@@ -26,9 +26,9 @@ spec:
           resources:
             requests:
               cpu: 10m
-              memory: 110Mi
+              memory: 323Mi
             limits:
-              # memory: 110Mi
+              memory: 323Mi
           ports:
             - containerPort: 1880
           volumeMounts:

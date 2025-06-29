@@ -19,6 +19,11 @@ spec:
       containers:
         - name: bazarr
           image: lscr.io/linuxserver/bazarr:latest
+          resources:
+            requests:
+              cpu: 13m
+            limits:
+              memory: 289Mi
           ports:
             - containerPort: 6767
           env:

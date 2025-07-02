@@ -23,7 +23,7 @@ spec:
           image: ghcr.io/home-assistant/home-assistant:stable
           resources:
             requests:
-              cpu: 10m
+              cpu: 83m
               memory: 554Mi
             limits:
               memory: 554Mi

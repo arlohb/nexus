@@ -21,10 +21,10 @@ spec:
           image: lscr.io/linuxserver/radarr:latest
           resources:
             requests:
-              cpu: 34m
-              memory: 221Mi
+              cpu: 33m
+              memory: 231Mi
             limits:
-              memory: 221Mi
+              memory: 231Mi
           ports:
             - containerPort: 7878
           env:

@@ -73,7 +73,7 @@ spec:
           image: lscr.io/linuxserver/qbittorrent:latest
           resources:
             requests:
-              cpu: 90m
+              cpu: 159m
               memory: 331Mi
             limits:
               memory: 331Mi
@@ -95,10 +95,10 @@ spec:
           image: lscr.io/linuxserver/prowlarr:latest
           resources:
             requests:
-              cpu: 95m
-              memory: 210Mi
+              cpu: 245m
+              memory: 214Mi
             limits:
-              memory: 210Mi
+              memory: 214Mi
           ports:
             - containerPort: 9696
           env:
@@ -116,9 +116,9 @@ spec:
           resources:
             requests:
               cpu: 10m
-              memory: 111Mi
+              memory: 121Mi
             limits:
-              memory: 111Mi
+              memory: 121Mi
           ports:
             - containerPort: 5299
           env:

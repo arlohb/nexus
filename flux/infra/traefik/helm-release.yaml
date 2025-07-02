@@ -23,7 +23,7 @@ spec:
       kind: DaemonSet
     resources:
       requests:
-        cpu: 10m
+        cpu: 70m
         memory: 204Mi
       limits:
         memory: 204Mi

@@ -21,10 +21,10 @@ spec:
           image: lscr.io/linuxserver/sonarr:latest
           resources:
             requests:
-              cpu: 47m
-              memory: 228Mi
+              cpu: 126m
+              memory: 419Mi
             limits:
-              # memory: 228Mi
+              memory: 419Mi
           ports:
             - containerPort: 8989
           env:

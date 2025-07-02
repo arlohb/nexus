@@ -23,7 +23,7 @@ spec:
           image: actualbudget/actual-server:edge-alpine
           resources:
             requests:
-              cpu: 10m
+              cpu: 13m
               memory: 117Mi
             limits:
               memory: 117Mi

@@ -21,7 +21,7 @@ spec:
           image: ghcr.io/advplyr/audiobookshelf:latest
           resources:
             requests:
-              cpu: 10m
+              cpu: 13m
               memory: 145Mi
             limits:
               memory: 145Mi

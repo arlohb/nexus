@@ -26,10 +26,10 @@ spec:
           image: jellyfin/jellyfin
           resources:
             requests:
-              cpu: 10m
-              memory: 640Mi
+              cpu: 256m
+              memory: 725Mi
             limits:
-              # memory: 640Mi
+              # memory: 725Mi
           securityContext:
             # Required for hardware acceleration
             privileged: true

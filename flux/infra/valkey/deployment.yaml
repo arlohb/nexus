@@ -17,7 +17,7 @@ spec:
         app: valkey
     spec:
       nodeSelector:
-        network: "fast"
+        network: fast
       containers:
         - name: valkey
           image: valkey/valkey:8-alpine

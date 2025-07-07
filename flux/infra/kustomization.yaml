@@ -6,3 +6,4 @@ resources:
   - storage/flux-kustomization.yaml
   - traefik/flux-kustomization.yaml
   - traefik-ingress/flux-kustomization.yaml
+  - valkey/flux-kustomization.yaml

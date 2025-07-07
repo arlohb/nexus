@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkey
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: valkey
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: valkey
+    spec:
+      nodeSelector:
+        network: "fast"
+      containers:
+        - name: valkey
+          image: valkey/valkey:8-alpine
+          resources:
+            # TODO: Not set yet
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          ports:
+            - containerPort: 6379

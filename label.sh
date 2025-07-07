@@ -18,3 +18,9 @@ kubectl label node neptune zigbee=false --overwrite
 kubectl label node pluto zigbee=true --overwrite
 kubectl label node arlo-laptop1 zigbee=false --overwrite
 
+# db
+kubectl label node datasphere db=true --overwrite
+kubectl label node neptune db=false --overwrite
+kubectl label node pluto db=false --overwrite
+kubectl label node arlo-laptop1 db=false --overwrite
+

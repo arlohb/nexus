@@ -7,5 +7,6 @@ resources:
   - jellyfin/flux-kustomization.yaml
   - kavita/flux-kustomization.yaml
   - homeassistant/flux-kustomization.yaml
+  - immich/flux-kustomization.yaml
   - nodered/flux-kustomization.yaml
   - vaultwarden/flux-kustomization.yaml

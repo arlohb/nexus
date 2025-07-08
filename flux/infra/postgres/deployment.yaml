@@ -22,12 +22,11 @@ spec:
         - name: postgres
           image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
           resources:
-            # TODO: Not set yet
             requests:
-              cpu: 10m
-              memory: 100Mi
+              cpu: 33m
+              memory: 430Mi
             limits:
-              # memory: 100Mi
+              memory: 430Mi
           ports:
             - containerPort: 5432
           env:

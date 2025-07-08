@@ -22,9 +22,9 @@ spec:
           resources:
             requests:
               cpu: 174m
-              memory: 289Mi
+              memory: 311Mi
             limits:
-              memory: 289Mi
+              memory: 311Mi
           ports:
             - containerPort: 6767
           env:

@@ -24,9 +24,9 @@ spec:
           resources:
             requests:
               cpu: 83m
-              memory: 554Mi
+              memory: 569Mi
             limits:
-              memory: 554Mi
+              memory: 569Mi
           securityContext:
             # Required for zigbee device access
             privileged: true

@@ -22,12 +22,11 @@ spec:
         - name: immich
           image: ghcr.io/immich-app/immich-server:release
           resources:
-            # TODO: Not set yet
             requests:
-              cpu: 10m
-              memory: 100Mi
+              cpu: 29m
+              memory: 1033Mi
             limits:
-              # memory: 100Mi
+              memory: 1033Mi
           ports:
             - containerPort: 2283
           env:

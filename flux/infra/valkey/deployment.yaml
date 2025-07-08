@@ -22,11 +22,10 @@ spec:
         - name: valkey
           image: valkey/valkey:8-alpine
           resources:
-            # TODO: Not set yet
             requests:
               cpu: 10m
               memory: 100Mi
             limits:
-              # memory: 100Mi
+              memory: 100Mi
           ports:
             - containerPort: 6379

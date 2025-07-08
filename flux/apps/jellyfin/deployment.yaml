@@ -27,9 +27,9 @@ spec:
           resources:
             requests:
               cpu: 256m
-              memory: 725Mi
+              memory: 981Mi
             limits:
-              # memory: 725Mi
+              # memory: 981Mi
           securityContext:
             # Required for hardware acceleration
             privileged: true

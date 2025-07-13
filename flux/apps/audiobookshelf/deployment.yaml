@@ -24,7 +24,7 @@ spec:
               cpu: 13m
               memory: 145Mi
             limits:
-              memory: 145Mi
+              # memory: 145Mi
           ports:
             - containerPort: 80
           volumeMounts:

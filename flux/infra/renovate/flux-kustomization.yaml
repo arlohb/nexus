@@ -7,6 +7,8 @@ spec:
   path: ./flux/infra/renovate
   prune: true
   interval: 10m
+  dependsOn:
+    - name: infra-secrets
   sourceRef:
     kind: GitRepository
     name: flux-system

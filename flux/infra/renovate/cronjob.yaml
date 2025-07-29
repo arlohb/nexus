@@ -19,7 +19,7 @@ spec:
                   value: '/opt/renovate/config.json'
               envFrom:
                 - secretRef:
-                    name: renovate-env
+                    name: renovate-secret
               volumeMounts:
                 - name: config
                   mountPath: /opt/renovate

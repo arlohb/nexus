@@ -6,6 +6,5 @@ metadata:
 data:
   config.json: |-
     {
-      "repositories": ["arlohb/nexus"],
-      "logLevel": "debug"
+      "repositories": ["arlohb/nexus"]
     }

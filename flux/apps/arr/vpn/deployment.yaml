@@ -20,7 +20,7 @@ spec:
       # https://github.com/qdm12/gluetun-wiki/pull/119
       initContainers:
         - name: gluetun
-          image: qmcgaw/gluetun
+          image: qmcgaw/gluetun:v3.40.0
           restartPolicy: Always
           env:
             - name: VPN_SERVICE_PROVIDER
@@ -70,7 +70,7 @@ spec:
             failureThreshold: 3
       containers:
         - name: qbt
-          image: lscr.io/linuxserver/qbittorrent:latest
+          image: lscr.io/linuxserver/qbittorrent:5.1.2
           resources:
             requests:
               cpu: 159m
@@ -92,7 +92,7 @@ spec:
             - name: qbt-downloads
               mountPath: /downloads
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:latest
+          image: lscr.io/linuxserver/prowlarr:1.37.0
           resources:
             requests:
               cpu: 245m
@@ -112,7 +112,7 @@ spec:
             - name: prowlarr-config
               mountPath: /config
         - name: ll
-          image: lscr.io/linuxserver/lazylibrarian:latest
+          image: lscr.io/linuxserver/lazylibrarian:468e62a0-ls175
           resources:
             requests:
               cpu: 10m

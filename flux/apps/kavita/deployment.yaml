@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: kavita
-          image: lscr.io/linuxserver/kavita:latest
+          image: lscr.io/linuxserver/kavita:0.8.7
           resources:
             requests:
               cpu: 59m

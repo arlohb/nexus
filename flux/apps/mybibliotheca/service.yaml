@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mybibliotheca
+  namespace: default
+spec:
+  selector:
+    app: mybibliotheca
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5054

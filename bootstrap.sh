@@ -2,6 +2,8 @@
 
 ./label.sh
 
+export GITHUB_TOKEN=$(cat token.txt)
+
 flux bootstrap github \
     --owner=arlohb \
     --repository=nexus \

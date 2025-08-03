@@ -3,4 +3,11 @@
   kubernetes: {
     managerFilePatterns: ["/\\.yaml$/"],
   },
+  packageRules: [
+    {
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+      ignoreTests: true,
+    },
+  ],
 }

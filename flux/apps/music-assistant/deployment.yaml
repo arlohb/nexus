@@ -17,7 +17,7 @@ spec:
         app: music-assistant
     spec:
       containers:
-        - name: kavita
+        - name: music-assistant
           image: ghcr.io/music-assistant/server:2.5.5
           resources:
             requests:

@@ -30,8 +30,14 @@ spec:
           volumeMounts:
             - name: music-assistant-data
               mountPath: /data
+            - name: media-music
+              mountPath: /music
       volumes:
         - name: music-assistant-data
           nfs:
             server: datasphere
             path: /Root/Volumes/music-assistant
+        - name: media-music
+          nfs:
+            server: datasphere
+            path: /Root/Media/Music

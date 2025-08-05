@@ -6,6 +6,7 @@ resources:
   - budget/flux-kustomization.yaml
   - jellyfin/flux-kustomization.yaml
   - kavita/flux-kustomization.yaml
+  - music-assistant/flux-kustomization.yaml
   - mybibliotheca/flux-kustomization.yaml
   - homeassistant/flux-kustomization.yaml
   - immich/flux-kustomization.yaml

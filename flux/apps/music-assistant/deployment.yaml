@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: music-assistant
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: music-assistant
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: music-assistant
+    spec:
+      containers:
+        - name: kavita
+          image: ghcr.io/music-assistant/server:2.5.5
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          ports:
+            - containerPort: 8095
+          volumeMounts:
+            - name: music-assistant-data
+              mountPath: /data
+      volumes:
+        - name: music-assistant-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/music-assistant

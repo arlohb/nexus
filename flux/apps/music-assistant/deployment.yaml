@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: music-assistant
-          image: ghcr.io/music-assistant/server:2.5.6
+          image: ghcr.io/music-assistant/server:2.5.7
           resources:
             requests:
               cpu: 10m

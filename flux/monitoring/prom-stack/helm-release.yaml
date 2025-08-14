@@ -30,6 +30,9 @@ spec:
           - ReadWriteOnce
         finalizers:
           - kubernetes.io/pvc-protection
+      grafana.ini:
+        security:
+          allow_embedding: true
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false

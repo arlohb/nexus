@@ -1,5 +1,5 @@
 apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+kind: IngressRouteTcp
 metadata:
   name: postgres
   namespace: default
@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`postgres.home`)
+    - match: HostSNI(`postgres.home`)
       kind: Rule
       services:
         - name: postgres

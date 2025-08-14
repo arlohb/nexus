@@ -33,6 +33,8 @@ spec:
       grafana.ini:
         security:
           allow_embedding: true
+        auth.service_account:
+          enabled: true
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false

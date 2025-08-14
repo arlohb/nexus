@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    apps/kubernetes.io/name: postgres
+    apps.kubernetes.io/name: postgres
   ports:
     - port: 5432
       targetPort: 5432

@@ -10,7 +10,6 @@ spec:
     - web
   routes:
     - match: HostSNI(`postgres.home`)
-      kind: Rule
       services:
         - name: postgres
           port: 5432

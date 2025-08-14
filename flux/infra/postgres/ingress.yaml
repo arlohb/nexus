@@ -1,5 +1,5 @@
 apiVersion: traefik.io/v1alpha1
-kind: IngressRouteTcp
+kind: IngressRouteTCP
 metadata:
   name: postgres
   namespace: default

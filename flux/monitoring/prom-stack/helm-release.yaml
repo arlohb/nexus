@@ -38,7 +38,7 @@ spec:
           cors_allowed_origins: https://ha.arlodev.co.uk
         auth.anonymous:
           enabled: true
-          org_name: Main Org
+          org_name: BikeDB
           org_role: Viewer
         auth.service_account:
           enabled: true

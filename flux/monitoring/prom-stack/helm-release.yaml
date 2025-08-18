@@ -33,7 +33,7 @@ spec:
       grafana.ini:
         security:
           allow_embedding: true
-          cookie_samesite: lax
+          cookie_samesite: disabled
         auth.service_account:
           enabled: true
     prometheus:

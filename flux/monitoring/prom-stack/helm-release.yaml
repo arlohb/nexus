@@ -34,6 +34,8 @@ spec:
         security:
           allow_embedding: true
           cookie_samesite: disabled
+          cors_allow_credentials: true
+          cors_allowed_origins: https://ha.arlodev.co.uk
         auth.service_account:
           enabled: true
     prometheus:

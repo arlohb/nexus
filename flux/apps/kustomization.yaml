@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - arr/flux-kustomization.yaml
   - audiobookshelf/flux-kustomization.yaml
+  - bike-db/flux-kustomization.yaml
   - budget/flux-kustomization.yaml
   - jellyfin/flux-kustomization.yaml
   - kavita/flux-kustomization.yaml

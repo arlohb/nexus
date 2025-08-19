@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bike-db
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: bike-db
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: bike-db
+    spec:
+      containers:
+        - name: bike-db
+          image: ghcr.io/arlohb/bike-db:sha256-eb158dadeb4777646cc82bb215642752316c577c1dad04fb6e3287de36b08f06.sig
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          env:
+            - name: PGHOST
+              value: postgres
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+          volumeMounts:
+            - name: bike-db-rides
+              mountPath: /rides
+      volumes:
+        - name: bike-db-rides
+          nfs:
+            server: datasphere
+            path: /Root/Files/BikeDB

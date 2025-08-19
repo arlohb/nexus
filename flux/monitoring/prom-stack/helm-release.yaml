@@ -33,15 +33,6 @@ spec:
       grafana.ini:
         security:
           allow_embedding: true
-          cookie_samesite: disabled
-          cors_allow_credentials: true
-          cors_allowed_origins: https://ha.arlodev.co.uk
-        auth.anonymous:
-          enabled: true
-          org_name: BikeDB
-          org_role: Viewer
-        auth.service_account:
-          enabled: true
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false

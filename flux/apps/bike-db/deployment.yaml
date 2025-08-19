@@ -16,8 +16,6 @@ spec:
       labels:
         app: bike-db
     spec:
-      nodeSelector:
-        arch: amd64
       containers:
         - name: bike-db
           image: ghcr.io/arlohb/bike-db:v0.0.1

@@ -18,6 +18,11 @@ spec:
     spec:
       nodeSelector:
         db: "true"
+      tolerations:
+        key: db
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       containers:
         - name: postgres
           image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0

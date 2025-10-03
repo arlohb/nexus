@@ -30,3 +30,6 @@ kubectl label node neptune db=false --overwrite
 kubectl label node pluto db=false --overwrite
 kubectl label node arlo-laptop1 db=false --overwrite
 
+# datasphere taint
+kubectl taint nodes datasphere db=true:NoSchedule
+

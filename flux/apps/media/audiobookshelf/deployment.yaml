@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:2.29.0
+          image: ghcr.io/advplyr/audiobookshelf:2.30.0
           resources:
             requests:
               cpu: 13m

@@ -23,7 +23,7 @@ spec:
           - 303 # render group
       containers:
         - name: jellyfin
-          image: jellyfin/jellyfin:10.11.0
+          image: jellyfin/jellyfin:10.11.1
           resources:
             requests:
               cpu: 256m

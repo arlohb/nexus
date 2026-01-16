@@ -20,7 +20,7 @@ spec:
         zigbee: "true"
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:2026.1.1
+          image: ghcr.io/home-assistant/home-assistant:2026.1.2
           resources:
             requests:
               cpu: 83m

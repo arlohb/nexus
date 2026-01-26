@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - bazarr/flux-kustomization.yaml
   - librofm-dl/flux-kustomization.yaml
-  - lidarr/flux-kustomization.yaml
   - radarr/flux-kustomization.yaml
   - readarr/flux-kustomization.yaml
   - sonarr/flux-kustomization.yaml

@@ -20,7 +20,7 @@ spec:
         network: fast
       containers:
         - name: immich
-          image: ghcr.io/immich-app/immich-server:v2.5.3
+          image: ghcr.io/immich-app/immich-server:v2.5.5
           resources:
             requests:
               cpu: 29m

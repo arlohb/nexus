@@ -7,5 +7,6 @@ resources:
   - homeassistant/flux-kustomization.yaml
   - immich/flux-kustomization.yaml
   - media/flux-kustomization.yaml
+  - nextcloud/flux-kustomization.yaml
   - nodered/flux-kustomization.yaml
   - vaultwarden/flux-kustomization.yaml

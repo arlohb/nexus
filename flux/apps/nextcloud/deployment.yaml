@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: nextcloud
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nextcloud
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          ports:
+            - containerPort: 80

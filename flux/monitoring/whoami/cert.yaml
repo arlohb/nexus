@@ -8,5 +8,5 @@ spec:
   dnsNames:
     - whoami.arlodev.co.uk
   issuerRef:
-    name: letencrypt-staging
+    name: letsencrypt-staging
     kind: Issuer

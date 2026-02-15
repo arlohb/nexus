@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-kavita
+  namespace: default
+spec:
+  secretName: cert-kavita
+  dnsNames:
+    - kavita.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: kavita
+  name: kavita-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`books.home`)
       kind: Rule
       services:
         - name: kavita
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kavita-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`books.arlodev.co.uk`)
       kind: Rule
       services:
         - name: kavita
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kavita-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`books.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: kavita
+          port: 80
+  tls:
+    secretName: cert-kavita

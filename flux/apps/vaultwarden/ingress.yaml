@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-vaultwarden
+  namespace: default
+spec:
+  secretName: cert-vaultwarden
+  dnsNames:
+    - vaultwarden.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: vaultwarden
+  name: vaultwarden-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`vault.home`)
       kind: Rule
       services:
         - name: vaultwarden
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vaultwarden-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`vault.arlodev.co.uk`)
       kind: Rule
       services:
         - name: vaultwarden
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vaultwarden-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`vault.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: vaultwarden
+          port: 80
+  tls:
+    secretName: cert-vaultwarden

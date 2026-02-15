@@ -27,5 +27,20 @@ spec:
               memory: 100Mi
             limits:
               # memory: 100Mi
+          env:
+            - name: POSTGRES_HOST
+              value: postgres:5432
+            - name: POSTGRES_DB
+              value: postgres
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
           ports:
             - containerPort: 80

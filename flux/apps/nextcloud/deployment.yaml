@@ -57,6 +57,8 @@ spec:
               mountPath: /var/www/html
             - name: nextcloud-files
               mountPath: /var/www/html/data/admin/files
+      securityContext:
+        fsGroup: 33
       volumes:
         - name: nextcloud
           nfs:

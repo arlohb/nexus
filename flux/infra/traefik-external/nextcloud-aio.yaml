@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cert-nextcloud-aio
+  name: cert-external-nextcloud-aio
   namespace: default
 spec:
-  secretName: cert-nextcloud-aio
+  secretName: cert-external-nextcloud-aio
   dnsNames:
     - aio.arlodev.co.uk
   issuerRef:
@@ -53,4 +53,4 @@ spec:
         - name: external-nextcloud-aio
           port: 8002
   tls:
-    secretName: cert-nextcloud-aio
+    secretName: cert-external-nextcloud-aio

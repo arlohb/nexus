@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-ll
+  namespace: default
+spec:
+  secretName: cert-ll
+  dnsNames:
+    - ll.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ll
+  name: ll-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`ll.home`)
       kind: Rule
       services:
         - name: ll
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ll-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`ll.arlodev.co.uk`)
       kind: Rule
       services:
         - name: ll
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ll-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`ll.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: ll
+          port: 80
+  tls:
+    secretName: cert-ll

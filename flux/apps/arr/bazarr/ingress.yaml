@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-bazarr
+  namespace: default
+spec:
+  secretName: cert-bazarr
+  dnsNames:
+    - bazarr.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: bazarr
+  name: bazarr-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`bazarr.home`)
       kind: Rule
       services:
         - name: bazarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bazarr-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`bazarr.arlodev.co.uk`)
       kind: Rule
       services:
         - name: bazarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bazarr-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bazarr.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: bazarr
+          port: 80
+  tls:
+    secretName: cert-bazarr

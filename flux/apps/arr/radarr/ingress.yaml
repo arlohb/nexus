@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-radarr
+  namespace: default
+spec:
+  secretName: cert-radarr
+  dnsNames:
+    - radarr.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: radarr
+  name: radarr-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`radarr.home`)
       kind: Rule
       services:
         - name: radarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`radarr.arlodev.co.uk`)
       kind: Rule
       services:
         - name: radarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`radarr.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 80
+  tls:
+    secretName: cert-radarr

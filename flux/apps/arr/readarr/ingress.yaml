@@ -1,21 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-readarr
+  namespace: default
+spec:
+  secretName: cert-readarr
+  dnsNames:
+    - readarr.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: readarr
+  name: readarr-local
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`readarr.home`)
       kind: Rule
       services:
         - name: readarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: readarr-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`readarr.arlodev.co.uk`)
       kind: Rule
       services:
         - name: readarr
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: readarr-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`readarr.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: readarr
+          port: 80
+  tls:
+    secretName: cert-readarr

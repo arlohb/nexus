@@ -52,3 +52,17 @@ spec:
               value: valkey
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: nextcloud
+              mountPath: /var/www/html
+            - name: nextcloud-files
+              mountPath: /var/www/html/data
+      volumes:
+        - name: nextcloud
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/nextcloud
+        - name: nextcloud-files
+          nfs:
+            server: datasphere
+            path: /Root/Files

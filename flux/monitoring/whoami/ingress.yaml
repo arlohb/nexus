@@ -14,7 +14,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: whoami
+  name: whoami-local
   namespace: default
 spec:
   entryPoints:
@@ -29,7 +29,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: whoami
+  name: whoami-web
   namespace: default
 spec:
   entryPoints:
@@ -44,7 +44,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: whoami-tls
+  name: whoami-websecure
   namespace: default
 spec:
   entryPoints:

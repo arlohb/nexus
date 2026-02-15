@@ -16,6 +16,8 @@ spec:
       labels:
         app: nextcloud
     spec:
+      nodeSelector:
+        network: fast
       containers:
         - name: nextcloud
           image: nextcloud

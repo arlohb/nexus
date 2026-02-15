@@ -1,0 +1,67 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-nextcloud
+  namespace: default
+spec:
+  secretName: cert-nextcloud
+  dnsNames:
+    - arlodev.co.uk
+    - www.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-nextcloud
+  namespace: default
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ExternalName
+  externalName: 10.0.0.162:443
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: external-nextcloud-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud
+          port: 80
+    - match: Host(`www.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: external-nextcloud-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud
+          port: 80
+    - match: Host(`www.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud
+          port: 80
+  tls:
+    secretName: cert-nextcloud

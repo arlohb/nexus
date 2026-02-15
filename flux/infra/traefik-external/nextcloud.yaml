@@ -20,9 +20,9 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 443
   type: ExternalName
-  externalName: 10.0.0.162:443
+  externalName: 10.0.0.162
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute

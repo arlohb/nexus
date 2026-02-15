@@ -1,0 +1,56 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-nextcloud-aio
+  namespace: default
+spec:
+  secretName: cert-nextcloud-aio
+  dnsNames:
+    - aio.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-nextcloud-aio
+  namespace: default
+spec:
+  ports:
+    - port: 8002
+      name: nextcloud-aio
+  type: ExternalName
+  externalName: arlo-laptop1
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: external-nextcloud-aio-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`aio.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud-aio
+          port: 8002
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: external-nextcloud-aio-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`aio.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: external-nextcloud-aio
+          port: 8002
+  tls:
+    secretName: cert-nextcloud-aio

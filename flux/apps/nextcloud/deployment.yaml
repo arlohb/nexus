@@ -42,5 +42,9 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
+            - name: NEXTCLOUD_ADMIN_USER
+              value: admin
+            - name: NEXTCLOUD_ADMIN_PASSWORD
+              value: initial
           ports:
             - containerPort: 80

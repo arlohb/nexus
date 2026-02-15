@@ -8,6 +8,7 @@ metadata:
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
     - match: Host(`whoami.home`)
       kind: Rule
@@ -19,3 +20,5 @@ spec:
       services:
         - name: whoami
           port: 80
+  tls:
+    secretName: cert-whoami

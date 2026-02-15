@@ -29,7 +29,7 @@ spec:
               # memory: 100Mi
           env:
             - name: POSTGRES_HOST
-              value: postgres:5432
+              value: postgres15:5432
             - name: POSTGRES_DB
               value: postgres
             - name: POSTGRES_USER

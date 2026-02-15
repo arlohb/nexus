@@ -50,10 +50,9 @@ spec:
             - "10.0.0.0/8"
         http:
           redirections:
-            entrypoint:
-              to: websecure
-              scheme: https
-              permanent: true
+            to: websecure
+            scheme: https
+            permanent: true
           tls:
             enable: false
       # HTTPS *.arlodev.co.uk

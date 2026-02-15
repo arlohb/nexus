@@ -21,6 +21,7 @@ spec:
   ports:
     - port: 8001
       targetPort: 8001
+      name: nextcloud
   type: ExternalName
   externalName: arlo-laptop1
 ---

@@ -48,5 +48,7 @@ spec:
               value: initial
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               value: nc.home
+            - name: REDIS_HOST
+              value: valkey
           ports:
             - containerPort: 80

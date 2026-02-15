@@ -9,4 +9,4 @@ spec:
     - whoami.arlodev.co.uk
   issuerRef:
     name: letsencrypt-staging
-    kind: Issuer
+    kind: ClusterIssuer

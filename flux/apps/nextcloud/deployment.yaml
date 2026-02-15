@@ -56,7 +56,7 @@ spec:
             - name: nextcloud
               mountPath: /var/www/html
             - name: nextcloud-files
-              mountPath: /var/www/html/data
+              mountPath: /var/www/html/data/admin/files
       volumes:
         - name: nextcloud
           nfs:

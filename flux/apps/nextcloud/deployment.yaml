@@ -46,5 +46,7 @@ spec:
               value: admin
             - name: NEXTCLOUD_ADMIN_PASSWORD
               value: initial
+            - name: NEXTCLOUD_TRUSTED_DOMAINS
+              value: nc.home
           ports:
             - containerPort: 80

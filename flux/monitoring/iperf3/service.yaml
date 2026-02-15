@@ -10,6 +10,6 @@ spec:
   externalTrafficPolicy: Local
   ports:
     - protocol: TCP
-      port: 5201
+      port: 80
       targetPort: 5201
       nodePort: 30521

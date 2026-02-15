@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pg-migrate-restore
+spec:
+  template:
+    spec:
+      nodeSelector:
+        network: fast
+      restartPolicy: Never
+      containers:
+        - name: pg-migrate-restore
+          image: ghcr.io/immich-app/postgres:18-vectorchord0.5.3-pgvector0.8.1
+          env:
+            - name: PGHOST
+              value: postgres
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+          volumeMounts:
+            - name: out
+              mountPath: /out
+          command: 
+            - sh
+            - -c
+            - psql
+              --host=$PGHOST
+              --dbname=$PGDATABASE
+              --port=$PGPORT
+              --username=$PGUSERNAME
+              --file=/out/dump
+      volumes:
+        - name: out
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/out
+  backoffLimit: 4

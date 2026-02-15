@@ -19,11 +19,10 @@ metadata:
   namespace: default
 spec:
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8001
+      targetPort: 8001
   type: ExternalName
-  # This is a custom alias defined in my DNS server
-  externalName: nc
+  externalName: 10.0.0.162
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -38,7 +37,7 @@ spec:
       kind: Rule
       services:
         - name: external-nextcloud
-          port: 80
+          port: 8001
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -53,12 +52,12 @@ spec:
       kind: Rule
       services:
         - name: external-nextcloud
-          port: 80
+          port: 8001
     - match: Host(`www.arlodev.co.uk`)
       kind: Rule
       services:
         - name: external-nextcloud
-          port: 80
+          port: 8001
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -73,11 +72,11 @@ spec:
       kind: Rule
       services:
         - name: external-nextcloud
-          port: 80
+          port: 8001
     - match: Host(`www.arlodev.co.uk`)
       kind: Rule
       services:
         - name: external-nextcloud
-          port: 80
+          port: 8001
   tls:
     secretName: cert-nextcloud

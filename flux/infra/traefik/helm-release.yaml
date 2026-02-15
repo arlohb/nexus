@@ -32,16 +32,31 @@ spec:
       type: NodePort
       externalTrafficPolicy: Local
     ports:
-      web:
-        port: 80
-        targetPort: 80
+      # HTTP *.home
+      local:
+        port: 8000
+        targetPort: 8000
         nodePort: 30001
         forwardedHeaders:
           trustedIPs:
             - "10.0.0.0/8"
+      # HTTP *.arlodev.co.uk
+      web:
+        port: 80
+        targetPort: 80
+        nodePort: 30003
+        forwardedHeaders:
+          trustedIPs:
+            - "10.0.0.0/8"
         http:
+          redirections:
+            entrypoint:
+              to: websecure
+              scheme: https
+              permanent: true
           tls:
             enable: false
+      # HTTPS *.arlodev.co.uk
       websecure:
         port: 443
         targetPort: 443

@@ -18,13 +18,23 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`whoami.home`)
       kind: Rule
       services:
         - name: whoami
           port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
     - match: Host(`whoami.arlodev.co.uk`)
       kind: Rule
       services:
@@ -40,11 +50,6 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`whoami.home`)
-      kind: Rule
-      services:
-        - name: whoami
-          port: 80
     - match: Host(`whoami.arlodev.co.uk`)
       kind: Rule
       services:

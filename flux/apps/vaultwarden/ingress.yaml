@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: cert-vaultwarden
   dnsNames:
-    - vaultwarden.arlodev.co.uk
+    - vault.arlodev.co.uk
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer

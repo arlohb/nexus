@@ -20,7 +20,7 @@ spec:
         network: fast
       containers:
         - name: nextcloud
-          image: nextcloud
+          image: nextcloud:32.0.6
           resources:
             requests:
               cpu: 10m

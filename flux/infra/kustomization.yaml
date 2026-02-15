@@ -4,6 +4,7 @@ resources:
   - cert-manager/flux-kustomization.yaml
   - mosquitto/flux-kustomization.yaml
   - postgres/flux-kustomization.yaml
+  - postgres15/flux-kustomization.yaml
   - renovate/flux-kustomization.yaml
   - secrets/flux-kustomization.yaml
   - storage/flux-kustomization.yaml

@@ -57,6 +57,8 @@ spec:
               mountPath: /var/www/html
             - name: nextcloud-files
               mountPath: /files
+            - name: nextcloud-media
+              mountPath: /media
       securityContext:
         fsGroup: 33
       volumes:
@@ -68,3 +70,7 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Files
+        - name: nextcloud-media
+          nfs:
+            server: datasphere
+            path: /Root/Media

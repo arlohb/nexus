@@ -1,0 +1,44 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-nextcloud-whiteboard
+  namespace: default
+spec:
+  secretName: cert-nextcloud-whiteboard
+  dnsNames:
+    - ncw.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-whiteboard-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`ncw.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: nextcloud-whiteboard
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-whiteboard-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`ncw.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: nextcloud-whiteboard
+          port: 80
+  tls:
+    secretName: cert-nextcloud-whiteboard

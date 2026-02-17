@@ -1,3 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: use-hsts
+  namespace: default
+spec:
+  headers:
+    stsSeconds: 15552000
+    forceSTSHeader: true
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -52,6 +62,9 @@ spec:
   routes:
     - match: Host(`nc.arlodev.co.uk`)
       kind: Rule
+      middlewares:
+        - name: use-hsts
+          namespace: default
       services:
         - name: nextcloud
           port: 80

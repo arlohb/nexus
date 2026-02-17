@@ -25,35 +25,35 @@ spec:
       services:
         - name: nextcloud
           port: 80
-# ---
-# apiVersion: traefik.io/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: nextcloud-web
-#   namespace: default
-# spec:
-#   entryPoints:
-#     - web
-#   routes:
-#     - match: Host(`nc.arlodev.co.uk`)
-#       kind: Rule
-#       services:
-#         - name: nextcloud
-#           port: 80
-# ---
-# apiVersion: traefik.io/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: nextcloud-websecure
-#   namespace: default
-# spec:
-#   entryPoints:
-#     - websecure
-#   routes:
-#     - match: Host(`nc.arlodev.co.uk`)
-#       kind: Rule
-#       services:
-#         - name: nextcloud
-#           port: 80
-#   tls:
-#     secretName: cert-nextcloud
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`nc.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nc.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 80
+  tls:
+    secretName: cert-nextcloud

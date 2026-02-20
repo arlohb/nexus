@@ -49,6 +49,8 @@ spec:
               mountPath: /movies
             - name: media-music
               mountPath: /music
+            - name: media-yt
+              mountPath: /yt
       volumes:
         - name: render-device
           hostPath:
@@ -74,3 +76,7 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Media/Music
+        - name: media-yt
+          nfs:
+            server: datasphere
+            path: /Root/Media/YT

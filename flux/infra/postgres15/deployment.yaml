@@ -25,7 +25,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: postgres15
-          image: postgres:15.16
+          image: postgres:15.17
           resources:
             requests:
               cpu: 33m

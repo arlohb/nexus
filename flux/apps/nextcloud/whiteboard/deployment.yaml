@@ -29,7 +29,7 @@ spec:
             - containerPort: 3002
           env:
             - name: NEXTCLOUD_URL
-              value: http://nc.home:30001
+              value: https://nc.arlodev.co.uk
             - name: JWT_SECRET_KEY
               valueFrom:
                 secretKeyRef:

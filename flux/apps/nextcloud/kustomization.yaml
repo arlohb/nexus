@@ -4,6 +4,3 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
-  - whiteboard/deployment.yaml
-  - whiteboard/service.yaml
-  - whiteboard/ingress.yaml

@@ -45,6 +45,8 @@ spec:
           volumeMounts:
             - name: bike-db-rides
               mountPath: /rides
+      securityContext:
+        fsGroup: 33
       volumes:
         - name: bike-db-rides
           nfs:

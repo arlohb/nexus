@@ -1,16 +1,3 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: cert-prom
-  namespace: default
-spec:
-  secretName: cert-prom
-  dnsNames:
-    - prom.arlodev.co.uk
-  issuerRef:
-    name: letsencrypt
-    kind: ClusterIssuer
----
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -18,37 +5,10 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - web
+    - local
   routes:
     - match: Host(`prom.home`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-prometheus
           port: 9090
-    - match: Host(`prom.arlodev.co.uk`)
-      kind: Rule
-      services:
-        - name: kube-prometheus-stack-prometheus
-          port: 9090
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: prom-tls
-  namespace: default
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`prom.home`)
-      kind: Rule
-      services:
-        - name: kube-prometheus-stack-prometheus
-          port: 9090
-    - match: Host(`prom.arlodev.co.uk`)
-      kind: Rule
-      services:
-        - name: kube-prometheus-stack-prometheus
-          port: 9090
-  tls:
-    secretName: cert-prom

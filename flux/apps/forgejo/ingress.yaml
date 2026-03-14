@@ -1,0 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-forgejo
+  namespace: default
+spec:
+  secretName: cert-forgejo
+  dnsNames:
+    - git.arlodev.co.uk
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forgejo-local
+  namespace: default
+spec:
+  entryPoints:
+    - local
+  routes:
+    - match: Host(`git.home`)
+      kind: Rule
+      services:
+        - name: forgejo
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forgejo-web
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`git.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: forgejo
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forgejo-websecure
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`git.arlodev.co.uk`)
+      kind: Rule
+      services:
+        - name: forgejo
+          port: 80
+  tls:
+    secretName: cert-forgejo

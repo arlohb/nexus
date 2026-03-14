@@ -4,6 +4,7 @@ resources:
   - arr/flux-kustomization.yaml
   - bike-db/flux-kustomization.yaml
   - budget/flux-kustomization.yaml
+  - forgejo/flux-kustomization.yaml
   - homeassistant/flux-kustomization.yaml
   - immich/flux-kustomization.yaml
   - media/flux-kustomization.yaml

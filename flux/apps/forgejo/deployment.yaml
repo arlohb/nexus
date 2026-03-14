@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgejo
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: forgejo
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: forgejo
+    spec:
+      containers:
+        - name: forgejo
+          image: codeberg.org/forgejo/forgejo:14.0.3
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          ports:
+            - containerPort: 3000
+          env:
+            - name: USER_UID
+              value: "1000"
+            - name: USER_GID
+              value: "1000"
+            - name: FORGEJO__database__DB_TYPE
+              value: postgres
+            - name: FORGEJO__database__HOST
+              value: postgres:5432
+            - name: FORGEJO__database__NAME
+              value: forgejo
+            - name: FORGEJO__database__USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-forgejo-secret
+                  key: user
+            - name: FORGEJO__database__PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-forgejo-secret
+                  key: password
+          volumeMounts:
+            - name: forgejo-data
+              mountPath: /data
+            - name: forgejo-conf
+              mountPath: /etc/gitea
+            - name: forgejo-repos
+              mountPath: /var/lib/gitea
+      volumes:
+        - name: forgejo-data
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/forgejo/data
+        - name: forgejo-conf
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/forgejo/conf
+        - name: forgejo-repos
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/forgejo/repos

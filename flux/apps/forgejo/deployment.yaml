@@ -51,20 +51,20 @@ spec:
           volumeMounts:
             - name: forgejo-data
               mountPath: /data
-            - name: forgejo-conf
-              mountPath: /etc/gitea
             - name: forgejo-repos
-              mountPath: /var/lib/gitea
+              mountPath: /repos
+            - name: forgejo-lfs
+              mountPath: /lfs
       volumes:
         - name: forgejo-data
           nfs:
             server: datasphere
             path: /Root/Volumes/forgejo/data
-        - name: forgejo-conf
-          nfs:
-            server: datasphere
-            path: /Root/Volumes/forgejo/conf
         - name: forgejo-repos
           nfs:
             server: datasphere
             path: /Root/Volumes/forgejo/repos
+        - name: forgejo-lfs
+          nfs:
+            server: datasphere
+            path: /Root/Volumes/forgejo/lfs

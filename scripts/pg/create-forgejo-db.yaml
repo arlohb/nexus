@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pg-create-user
+spec:
+  template:
+    spec:
+      nodeSelector:
+        network: fast
+      restartPolicy: Never
+      containers:
+        - name: pg-create-user
+          image: ghcr.io/immich-app/postgres:18-vectorchord0.5.3-pgvector0.8.1
+          env:
+            - name: PGHOST
+              value: postgres
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: FORGEJOUSER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-forgejo-secret
+                  key: user
+          command: 
+            - sh
+            - -c
+            - psql
+              --host=$PGHOST
+              --dbname=$PGDATABASE
+              --port=$PGPORT
+              --username=$PGUSERNAME
+              --command="CREATE DATABASE forgejo
+                WITH OWNER $(FORGEJOUSER)
+                TEMPLATE template0
+                ENCODING UTF8
+                LC_COLLATE 'en_US.UTF-8'
+                LC_CTYPE 'en_US.UTF-8'
+              ;"
+  backoffLimit: 4

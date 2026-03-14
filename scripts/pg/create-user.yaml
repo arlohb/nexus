@@ -46,5 +46,5 @@ spec:
               --dbname=$PGDATABASE
               --port=$PGPORT
               --username=$PGUSERNAME
-              --command='CREATE ROLE $(NEWUSER) WITH LOGIN PASSWORD $(NEWPASSWORD);'
+              --command="CREATE ROLE $(NEWUSER) WITH LOGIN PASSWORD '$(NEWPASSWORD)';"
   backoffLimit: 4

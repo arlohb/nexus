@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pg-create-user
+spec:
+  template:
+    spec:
+      nodeSelector:
+        network: fast
+      restartPolicy: Never
+      containers:
+        - name: pg-create-user
+          image: ghcr.io/immich-app/postgres:18-vectorchord0.5.3-pgvector0.8.1
+          env:
+            - name: PGHOST
+              value: postgres
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: NEWUSER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-forgejo-secret
+                  key: user
+            - name: NEWPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-forgejo-secret
+                  key: password
+          command: 
+            - sh
+            - -c
+            - psql
+              --host=$PGHOST
+              --dbname=$PGDATABASE
+              --port=$PGPORT
+              --username=$PGUSERNAME
+              --command='CREATE ROLE $(NEWUSER) WITH LOGIN PASSWORD $(NEWPASSWORD);'
+  backoffLimit: 4

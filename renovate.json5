@@ -9,7 +9,7 @@
       matchUpdateTypes: ["minor", "patch", "digest"],
       automerge: true,
       ignoreTests: true,
-    }
+    },
     {
       matchUpdateTypes: ["patch"],
       automerge: true,

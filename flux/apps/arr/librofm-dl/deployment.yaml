@@ -18,7 +18,8 @@ spec:
     spec:
       containers:
         - name: librofm-dl
-          image: ghcr.io/burntcookie90/librofm-downloader:v2.2.1
+          # Versioned tags aren't being published correctly
+          image: ghcr.io/burntcookie90/librofm-downloader:latest
           resources:
             requests:
               cpu: 10m

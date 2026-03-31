@@ -4,12 +4,12 @@
     managerFilePatterns: ["/\\.yaml$/"],
   },
   packageRules: [
-    {
-      matchPackageNames: ["renovate/renovate"],
-      matchUpdateTypes: ["minor", "patch", "digest"],
-      automerge: true,
-      ignoreTests: true,
-    },
+    // {
+    //   matchPackageNames: ["renovate/renovate"],
+    //   matchUpdateTypes: ["minor", "patch", "digest"],
+    //   automerge: true,
+    //   ignoreTests: true,
+    // },
     {
       matchUpdateTypes: ["patch"],
       automerge: true,

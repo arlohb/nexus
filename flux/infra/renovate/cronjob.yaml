@@ -13,7 +13,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: renovate
-              image: renovate/renovate:43.101.2
+              image: renovate/renovate:43.101.4
               env:
                 - name: RENOVATE_CONFIG_FILE
                   value: '/opt/renovate/config.json'

@@ -92,7 +92,7 @@ spec:
             - name: qbt-downloads
               mountPath: /downloads
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:2.3.0
+          image: lscr.io/linuxserver/prowlarr:2.3.5
           resources:
             requests:
               cpu: 245m

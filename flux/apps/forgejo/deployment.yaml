@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: forgejo
-          image: codeberg.org/forgejo/forgejo:15.0.0
+          image: codeberg.org/forgejo/forgejo:15.0.1
           resources:
             requests:
               cpu: 10m

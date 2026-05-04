@@ -20,6 +20,7 @@ spec:
         - name: librofm-dl
           # Versioned tags aren't being published correctly
           image: ghcr.io/burntcookie90/librofm-downloader:latest
+          imagePullPolicy: Always
           resources:
             requests:
               cpu: 10m

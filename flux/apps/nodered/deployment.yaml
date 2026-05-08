@@ -22,7 +22,7 @@ spec:
         fsGroup: 0
       containers:
         - name: nodered
-          image: nodered/node-red:4.1.9
+          image: nodered/node-red:4.1.10
           resources:
             requests:
               cpu: 149m

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: bike-db
-          image: ghcr.io/arlohb/bike-db:v0.0.2
+          image: ghcr.io/arlohb/bike-db:v0.0.3
           resources:
             requests:
               cpu: 10m

@@ -16,6 +16,10 @@ spec:
       labels:
         app: bike-db
     spec:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
       containers:
         - name: bike-db
           image: ghcr.io/arlohb/bike-db:v0.0.3
@@ -45,8 +49,6 @@ spec:
           volumeMounts:
             - name: bike-db-rides
               mountPath: /rides
-      securityContext:
-        fsGroup: 33
       volumes:
         - name: bike-db-rides
           nfs:

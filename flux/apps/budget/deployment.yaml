@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: budget
-          image: actualbudget/actual-server:26.5.2-alpine
+          image: actualbudget/actual-server:26.6.0-alpine
           resources:
             requests:
               cpu: 13m

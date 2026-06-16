@@ -70,7 +70,7 @@ spec:
             failureThreshold: 3
       containers:
         - name: qbt
-          image: lscr.io/linuxserver/qbittorrent:5.2.1
+          image: lscr.io/linuxserver/qbittorrent:5.2.2
           resources:
             requests:
               cpu: 159m

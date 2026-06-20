@@ -56,6 +56,8 @@ spec:
             # Other fields default to the values for database
             - name: VECTOR_DB
               value: pgvector
+            - name: PGVECTOR_CREATE_EXTENSION
+              value: "false"
           ports:
             - containerPort: 8080
           volumeMounts:

@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pg-create-forgejo-db
+  name: pg-create-db
 spec:
   template:
     spec:
@@ -9,7 +9,7 @@ spec:
         network: fast
       restartPolicy: Never
       containers:
-        - name: pg-create-forgejo-db
+        - name: pg-create-db
           image: ghcr.io/immich-app/postgres:18-vectorchord0.5.3-pgvector0.8.1
           env:
             - name: PGHOST
@@ -28,11 +28,13 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
-            - name: FORGEJOUSER
+            - name: OWNERUSER
               valueFrom:
                 secretKeyRef:
                   name: postgres-forgejo-secret
                   key: user
+            - name: NEWDB
+              value: forgejo
           command: 
             - sh
             - -c
@@ -41,8 +43,8 @@ spec:
               --dbname=$PGDATABASE
               --port=$PGPORT
               --username=$PGUSERNAME
-              --command="CREATE DATABASE forgejo
-                WITH OWNER $(FORGEJOUSER)
+              --command="CREATE DATABASE $(NEWDB)
+                WITH OWNER $(OWNERUSER)
                 TEMPLATE template0
                 ENCODING UTF8
                 LC_COLLATE 'en_US.UTF-8'

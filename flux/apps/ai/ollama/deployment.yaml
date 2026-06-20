@@ -24,13 +24,14 @@ spec:
           value: "true"
           effect: NoSchedule
       securityContext:
-        privileged: true
         runAsUser: 0
         runAsGroup: 0
         fsGroup: 0
       containers:
         - name: ollama
           image: ollama/ollama:0.30.10
+          securityContext:
+            privileged: true
           resources:
             requests:
               cpu: 10m

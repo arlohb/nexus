@@ -25,6 +25,25 @@ spec:
               memory: 100Mi
             limits:
               # memory: 100Mi
+          env:
+            - name: DATABASE_TYPE
+              value: postgresql
+            - name: DATABASE_HOST
+              value: postgres
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: openwebui
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-open-webui-secret
+                  key: user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-open-webui-secret
+                  key: password
           ports:
             - containerPort: 8080
           volumeMounts:

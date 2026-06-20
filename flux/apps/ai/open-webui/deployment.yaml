@@ -52,6 +52,10 @@ spec:
               value: redis
             - name: ENABLE_WEBSOCKET_SUPPORT
               value: "true"
+            # Postgres vector DB
+            # Other fields default to the values for database
+            - name: VECTOR_DB
+              value: pgvector
           ports:
             - containerPort: 8080
           volumeMounts:

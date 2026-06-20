@@ -24,6 +24,7 @@ spec:
           value: "true"
           effect: NoSchedule
       securityContext:
+        privileged: true
         runAsUser: 0
         runAsGroup: 0
         fsGroup: 0
@@ -41,8 +42,18 @@ spec:
           volumeMounts:
             - name: ollama-data
               mountPath: /root/.ollama
+            - name: dri
+              mountPath: /dev/dri
+            - name: kfd
+              mountPath: /dev/kfd
       volumes:
         - name: ollama-data
           nfs:
             server: datasphere
             path: /Root/Volumes/ollama
+        - name: dri
+          hostPath:
+            path: /dev/dri
+        - name: kfd
+          hostPath:
+            path: /dev/kfd

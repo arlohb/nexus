@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: open-webui
-          image: openwebui/open-webui:0.9.6-slim
+          image: openwebui/open-webui:0.9.6
           resources:
             requests:
               cpu: 10m

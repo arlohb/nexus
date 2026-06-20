@@ -56,6 +56,7 @@ spec:
             # Other fields default to the values for database
             - name: VECTOR_DB
               value: pgvector
+            # Created in a script so user is non-superuser
             - name: PGVECTOR_CREATE_EXTENSION
               value: "false"
           ports:

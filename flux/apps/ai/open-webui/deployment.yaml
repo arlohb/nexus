@@ -26,6 +26,7 @@ spec:
             limits:
               # memory: 100Mi
           env:
+            # Postgres
             - name: DATABASE_TYPE
               value: postgresql
             - name: DATABASE_HOST
@@ -44,6 +45,13 @@ spec:
                 secretKeyRef:
                   name: postgres-open-webui-secret
                   key: password
+            # Redis
+            - name: REDIS_URL
+              value: redis://valkey:6379/0
+            - name: WEBSOCKET_MANAGER
+              value: redis
+            - name: ENABLE_WEBSOCKET_SUPPORT
+              value: "true"
           ports:
             - containerPort: 8080
           volumeMounts:

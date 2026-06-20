@@ -30,6 +30,14 @@ kubectl label node neptune db=false --overwrite
 kubectl label node pluto db=false --overwrite
 kubectl label node arlo-laptop1 db=false --overwrite
 
+# gpu
+kubectl label node datasphere gpu=false --overwrite
+kubectl label node neptune gpu=false --overwrite
+kubectl label node pluto gpu=false --overwrite
+kubectl label node arlo-laptop1 gpu=false --overwrite
+kubectl label node bazzite gpu=true --overwrite
+
 # datasphere taint
 kubectl taint nodes datasphere db=true:NoSchedule
+kubectl taint nodes bazzite gpu=true:NoSchedule
 

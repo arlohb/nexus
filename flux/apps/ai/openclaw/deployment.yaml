@@ -44,6 +44,11 @@ spec:
       containers:
         - name: openclaw
           image: ghcr.io/openclaw/openclaw:2026.6.9
+          command:
+            - node
+            - /app/dist/index.js
+            - gateway
+            - run
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000

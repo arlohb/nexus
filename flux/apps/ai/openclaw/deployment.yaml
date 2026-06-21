@@ -18,6 +18,29 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+      initContainers:
+        - name: init-config
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              cp /config/openclaw.json /home/node/.openclaw/openclaw.json
+              mkdir -p /home/node/.openclaw/workspace
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              # memory: 100Mi
+          volumeMounts:
+            - name: openclaw-data
+              mountPath: /home/node/.openclaw
+            - name: config
+              mountPath: /config
       containers:
         - name: openclaw
           image: ghcr.io/openclaw/openclaw:2026.6.9
@@ -36,11 +59,23 @@ spec:
               memory: 100Mi
             limits:
               # memory: 100Mi
+          env:
+            - name: HOME
+              value: /home/node
+            - name: OPENCLAW_CONFIG_DIR
+              value: /home/node/.openclaw
+            - name: NODE_ENV
+              value: production
+            - name: OPENCLAW_GATEWAY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: openclaw-secret
+                  key: gatewayToken
           ports:
             - containerPort: 11434
           volumeMounts:
-            # - name: openclaw-data
-            #   mountPath: /home/node/.openclaw
+            - name: openclaw-data
+              mountPath: /home/node/.openclaw
             - name: tmp
               mountPath: /tmp
       volumes:
@@ -48,5 +83,8 @@ spec:
           nfs:
             server: datasphere
             path: /Root/Volumes/openclaw
+        - name: config
+          configMap:
+            name: openclaw-config
         - name: tmp
           emptyDir: {}

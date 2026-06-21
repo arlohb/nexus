@@ -11,5 +11,13 @@ data:
         auth: {
           mode: "token",
         },
+        // Enable the OpenAI-compatible endpoint for use in open-webui
+        http: {
+          endpoints: {
+            chatCompletions: {
+              enabled: true,
+            },
+          },
+        },
       }
     }

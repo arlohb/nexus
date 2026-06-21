@@ -12,6 +12,11 @@ data:
         auth: {
           mode: "token",
         },
+        controlUi: {
+          allowedOrigins: [
+            "http://oc.home:30001",
+          ],
+        },
         // Enable the OpenAI-compatible endpoint for use in open-webui
         http: {
           endpoints: {

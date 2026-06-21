@@ -4,7 +4,7 @@ metadata:
   name: openclaw-config
   namespace: default
 data:
-  openclaw.json |
+  openclaw.json: |
     {
       gateway: {
         mode: "local",

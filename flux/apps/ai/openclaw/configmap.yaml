@@ -19,7 +19,7 @@ data:
             },
           },
         },
-      }
+      },
       // Connect to Ollama
       models: {
         providers: {

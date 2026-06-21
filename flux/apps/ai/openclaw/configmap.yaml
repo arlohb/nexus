@@ -27,13 +27,13 @@ data:
           ollama: {
             baseUrl: "http://ollama:11434",
             api: "ollama",
-            contextWindow: 32768,
+            contextWindow: 524288,
             models: [
               {
                 id: "gemma4:e4b",
                 name: "gemma4:e4b",
                 params: {
-                  num_ctx: 32768,
+                  num_ctx: 524288,
                 },
               },
             ],

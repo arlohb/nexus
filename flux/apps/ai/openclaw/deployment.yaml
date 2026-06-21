@@ -72,7 +72,7 @@ spec:
                   name: openclaw-secret
                   key: gatewayToken
           ports:
-            - containerPort: 11434
+            - containerPort: 18789
           volumeMounts:
             - name: openclaw-data
               mountPath: /home/node/.openclaw

@@ -20,4 +20,31 @@ data:
           },
         },
       }
+      // Connect to Ollama
+      models: {
+        providers: {
+          ollama: {
+            baseUrl: "http://ollama:11434",
+            api: "ollama",
+            contextWindow: 32768,
+            models: [
+              {
+                id: "gemma4:e4b",
+                name: "gemma4:e4b",
+                params: {
+                  num_ctx: 32768,
+                },
+              },
+            ],
+          },
+        },
+      },
+      agents: {
+        defaults: {
+          workspace: "~/.openclaw/workspace",
+          model: {
+            primary: "ollama/gemma4:e4b",
+          },
+        },
+      },
     }

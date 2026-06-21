@@ -4,3 +4,4 @@ resources:
   - ollama/flux-kustomization.yaml
   - open-terminal/flux-kustomization.yaml
   - open-webui/flux-kustomization.yaml
+  - openclaw/flux-kustomization.yaml

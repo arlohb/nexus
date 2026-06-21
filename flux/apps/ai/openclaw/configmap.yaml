@@ -13,6 +13,7 @@ data:
           mode: "token",
         },
         controlUi: {
+          allowInsecureAuth: true,
           allowedOrigins: [
             "http://oc.home:30001",
           ],

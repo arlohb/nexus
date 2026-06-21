@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: oc-local
+  namespace: default
+spec:
+  entryPoints:
+    - local
+  routes:
+    - match: Host(`oc.home`)
+      kind: Rule
+      services:
+        - name: openclaw
+          port: 18789

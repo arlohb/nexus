@@ -8,6 +8,7 @@ data:
     {
       gateway: {
         mode: "local",
+        bind: "lan",
         auth: {
           mode: "token",
         },

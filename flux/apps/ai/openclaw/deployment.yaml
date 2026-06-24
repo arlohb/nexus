@@ -43,7 +43,7 @@ spec:
               mountPath: /config
       containers:
         - name: openclaw
-          image: ghcr.io/openclaw/openclaw:2026.6.9
+          image: ghcr.io/openclaw/openclaw:2026.6.10
           command:
             - node
             - /app/dist/index.js

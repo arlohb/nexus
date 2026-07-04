@@ -24,7 +24,7 @@ spec:
               cpu: 59m
               memory: 339Mi
             limits:
-              memory: 339Mi
+              # memory: 339Mi
           ports:
             - containerPort: 5000
           env:

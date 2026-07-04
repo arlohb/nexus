@@ -50,12 +50,6 @@ spec:
               value: nc.home
             - name: REDIS_HOST
               value: valkey
-            # Upload limit for big files
-            - name: PHP_UPLOAD_LIMIT
-              value: 2048M
-            # Restrics the total size of the HTTP requests
-            - name: APACHE_BODY_LIMIT
-              value: "2147483648"
           ports:
             - containerPort: 80
           volumeMounts:

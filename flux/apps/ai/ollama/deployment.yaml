@@ -40,6 +40,9 @@ spec:
               # memory: 100Mi
           ports:
             - containerPort: 11434
+          env:
+            - name: OLLAMA_CONTEXT_LENGTH
+              value: "131072"
           volumeMounts:
             - name: ollama-data
               mountPath: /root/.ollama

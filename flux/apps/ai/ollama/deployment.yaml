@@ -29,7 +29,7 @@ spec:
         fsGroup: 0
       containers:
         - name: ollama
-          image: ollama/ollama:0.32.0
+          image: ollama/ollama:0.32.1
           securityContext:
             privileged: true
           resources:

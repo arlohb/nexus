@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: open-terminal
-          image: ghcr.io/open-webui/open-terminal:0.11.34
+          image: ghcr.io/open-webui/open-terminal:0.11.35
           resources:
             requests:
               cpu: 10m

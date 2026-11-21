@@ -25,7 +25,13 @@ spec:
               volumeMounts:
                 - name: config
                   mountPath: /opt/renovate
+                - name: scratch
+                  mountPath: /tmp/renovate
           volumes:
             - name: config
               configMap:
                 name: renovate-config
+            - name: scratch
+              nfs:
+                server: datasphere
+                path: /Root/Volumes/renovate

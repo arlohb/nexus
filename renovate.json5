@@ -3,6 +3,9 @@
   kubernetes: {
     managerFilePatterns: ["/\\.yaml$/"],
   },
+  "prConcurrentLimit": 0,
+  "branchConcurrentLimit": 0,
+  "prHourlyLimit": 0,
   packageRules: [
     // {
     //   matchPackageNames: ["renovate/renovate"],
